@@ -12,6 +12,8 @@ const Home = () => {
         },
 
     ])
+
+    const [id , setId] = useState(0);
     const [title, setTitle] = useState('');
     const [discription, setDiscription] = useState('');
     const [priority, setPriority] = useState('');
@@ -70,7 +72,22 @@ const Home = () => {
 
     const setTaskEditable = (id) =>{
         setIsEdit(true);
-        console.log(id)
+        setId(id);
+        let currentEditTask;
+
+        taskList.forEach((task) => {
+            if(task.id === id){
+                currentEditTask = task ; 
+            }
+        })
+
+        setTitle(currentEditTask.title)
+        setDiscription(currentEditTask.discription)
+        setPriority(currentEditTask.priority)
+       
+    }
+
+    const updateTask = () => {
 
     }
 
@@ -99,7 +116,7 @@ const Home = () => {
                     </div>
                     <div>
                         <h2 className="text-center">
-                            {isEdit ? "Update Task" : "Add Task"}
+                            {isEdit ? `Update Task ${id}` : "Add Task"}
                         </h2>
                         <div className="add-task-form-container">
                             <form>

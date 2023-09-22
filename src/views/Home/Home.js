@@ -88,7 +88,29 @@ const Home = () => {
     }
 
     const updateTask = () => {
+        let indexToUpdate ;
 
+        taskList.forEach((task , i) => {
+            if(task.id === id){
+                indexToUpdate = i ;
+            }
+        })
+        const tempArray = taskList;
+        tempArray[indexToUpdate ] ={
+            id : id,
+            title : title,
+            discription : discription,
+            priority : priority ,
+        }
+        setTaskList([...tempArray])
+
+        saveListToLocalStorage(tempArray)
+
+        setId(0);
+        setTitle('');
+        setDiscription('');
+        setPriority('');
+        setIsEdit(false);
     }
 
     return (
@@ -152,7 +174,7 @@ const Home = () => {
                                         isEdit ?
                                             <button className="btn-add-task"
                                                 type="button"
-                                                onClick={addTaskToList}
+                                                onClick={updateTask}
                                             >
                                                 Update
                                             </button>

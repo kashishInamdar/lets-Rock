@@ -22,3 +22,10 @@
     border-radius:0 10px 0 0;
     background-color: #b380ff;
 }
+.task-delet-icon{
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    cursor: pointer;
+
+}

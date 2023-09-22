@@ -10,36 +10,47 @@ const Home = () => {
             discription: "Nahi to gali padegi",
             priority: "high"
         },
-        {
-            id: 2,
-            title: "Preir",
-            discription: "Nahi ki to Savab nahi milega",
-            priority: "very high"
-        },
-        {
-            id: 1,
-            title: "Cocking",
-            discription: "karni hi hogi",
-            priority: "Medeum",
-        },
+
     ])
     const [title, setTitle] = useState('');
     const [discription, setDiscription] = useState('');
     const [priority, setPriority] = useState('');
 
+    const loadListFromeLocalStorage = () => {
+        const list = localStorage.getItem('le')
+    }
+
+    const saveListToLocalStorage = (tasks) => {
+        localStorage.setItem('letsRock', JSON.stringify(tasks) )
+    }
+
     const addTaskToList = () => {
         const randomId = Math.floor(Math.random() * 1000);
-        const obj ={
-            id : randomId,
-            title : title,
-            discription : discription,
-            priority : priority,
+
+        const obj = {
+            id: randomId,
+            title: title,
+            discription: discription,
+            priority: priority,
         }
-        setTaskList([...taskList , obj])
+
+        const newTaskList = [...taskList, obj]
+
+        setTaskList(newTaskList)
         setTitle('');
         setDiscription('');
         setPriority('');
+
+        saveListToLocalStorage(newTaskList);
     }
+
+    const removeTaskFromList = (obj) =>{
+        const index = taskList.indexOf(obj);
+
+        const tempArray = taskList ;
+        tempArray.splice(index , 1);
+        setTaskList([...tempArray])
+    } 
 
     return (
         <>
@@ -52,7 +63,15 @@ const Home = () => {
                         {
                             taskList.map((taskItem, index) => {
                                 const { id, title, discription, priority } = taskItem;
-                                return <Task id={id} title={title} discription={discription} priority={priority} />
+
+                                return <Task id={id}
+                                    title={title}
+                                    discription={discription}
+                                    priority={priority}
+                                    key={index} 
+                                    removeTaskFromList ={removeTaskFromList}
+                                    obj={taskItem}
+                                 />
                             })
                         }
                     </div>
@@ -86,12 +105,12 @@ const Home = () => {
                                     className="task-input"
                                 />
 
-                                    <button  className="btn-add-task"
-                                    type="button" 
+                                <button className="btn-add-task"
+                                    type="button"
                                     onClick={addTaskToList}
-                                    >
-                                        Add Task To List
-                                    </button>
+                                >
+                                    Add Task To List
+                                </button>
                             </form>
                         </div>
                     </div>

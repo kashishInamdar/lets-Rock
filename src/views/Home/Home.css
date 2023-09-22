@@ -35,6 +35,10 @@
      border-radius: 30px;
      padding: 15px 30px;
      border: none;
-     display: block;
-     margin: 20px auto;
+     width: 120px;
+     margin: 20px ;
+}
+.but-container{
+    display: flex;
+    justify-content: space-around;
 }

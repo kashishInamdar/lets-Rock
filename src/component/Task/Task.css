@@ -8,7 +8,7 @@
     position: relative;
 }
 .task-title{
-    margin: 2px;
+    margin: 2px 4px;
 }
 .task-discription{
     margin: 0;
@@ -25,7 +25,12 @@
 .task-delet-icon{
     position: absolute;
     bottom: 5px;
+    right: 45px;
+    cursor: pointer;
+}
+.task-edit-icon{
+    position: absolute;
+    bottom: 5px;
     right: 5px;
     cursor: pointer;
-
 }

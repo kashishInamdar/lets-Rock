@@ -1,7 +1,7 @@
 import React from "react";
 import "./Task.css"
 
-const Task =({id, title, discription, priority , removeTaskFromList,obj}) =>{
+const Task =({id, title, discription, priority , removeTaskFromList,setTaskEditable}) =>{
     return(
         <div className="task-container">
             <h1 className="task-title">{title}</h1>
@@ -9,10 +9,17 @@ const Task =({id, title, discription, priority , removeTaskFromList,obj}) =>{
             <span className="task-priority">🎯 {priority} </span>
             <span className="task-delet-icon"
             onClick={()=>{
-                removeTaskFromList(obj);
+                removeTaskFromList(id);
             }}
             >
             🗑️
+            </span>
+            <span className="task-edit-icon"
+            onClick={()=>{
+                setTaskEditable(id);
+            }}
+            >
+             ✏️
             </span>
         </div>
     )

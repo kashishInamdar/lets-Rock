@@ -23,7 +23,7 @@ const Home = () => {
 
     useEffect(() => {
         const list = JSON.parse(localStorage.getItem('letsRock'));
-        if (list && list.length >= 0) {
+        if (list && list.length > 0) {
             setTaskList(list)
         }
     }, [])
@@ -48,6 +48,19 @@ const Home = () => {
 
 
     const addTaskToList = () => {
+
+        if(!title ){
+            showToast('Title is required ' , 'warning' , 3000);
+            return ;
+        }
+        if( !discription ){
+            showToast('Discription is required ' , 'warning' , 3000);
+            return ;
+        }
+        if( !priority){
+            showToast('Priority is required ' , 'warning' , 3000);
+            return ;
+        }
         const randomId = Math.floor(Math.random() * 1000);
 
         const obj = {

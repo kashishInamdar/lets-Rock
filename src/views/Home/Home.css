@@ -20,6 +20,13 @@
     flex-wrap: wrap;
     justify-content: space-around;    
 }
+.tasks-container{
+    height: 500px;
+    overflow-y: scroll;  
+}
+.tasks-container::-webkit-scrollbar{
+    width: 5px;
+}
 .task-input{
     display: block;
     width: 300px;

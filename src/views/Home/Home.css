@@ -21,7 +21,9 @@
     justify-content: space-around;    
 }
 .tasks-container{
-    height: 500px;
+    position: relative;
+    top: 20px;
+    height: 100vh;
     overflow-y: scroll;  
 }
 .tasks-container::-webkit-scrollbar{

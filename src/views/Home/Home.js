@@ -23,7 +23,7 @@ const Home = () => {
 
     useEffect(() => {
         const list = JSON.parse(localStorage.getItem('letsRock'));
-        if (list && list.length > 0) {
+        if (list && list.length >= 0) {
             setTaskList(list)
         }
     }, [])
@@ -31,7 +31,7 @@ const Home = () => {
     const findTaskIndexById = (taskId) => {
         let index;
         taskList.forEach((task, i) => {
-            if (taskList.id === taskId) {
+            if (task.id === taskId) {
                 index = i;
             }
         })
